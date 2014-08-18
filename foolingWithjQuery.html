@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+        var isFirst = true
+		$(document).ready(function(){
+            $("button").click(function(){
+                if (isFirst) { 
+                    console.log("RUNNING")
+                    $("body").append("<ol></ol>")
+                    $("ol").append("<li>WAHOOOO!</li>")
+                    isFirst = false
+                }
+                else {
+                    $("ol").append("<li>WAHOOOO</li>")
+                }
+            });
+		});
+		</script>
+	</head>
+	<body>
+
+		<button>Add an element to a list!</button>
+
+	</body>
+</html>

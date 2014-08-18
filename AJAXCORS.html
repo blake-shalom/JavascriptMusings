@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.get(
+                    'http://www.corsproxy.com/en.wikipedia.org/wiki/Http',
+                    function(response) {
+                        $("body").append(response);
+            });
+            });
+        });
+        </script>
+    </head>
+    <body>
+
+        <button>Append a request from wikipedia!</button>
+
+    </body>
+</html>
+ 
