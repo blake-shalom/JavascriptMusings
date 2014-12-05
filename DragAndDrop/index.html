@@ -1,0 +1,39 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- CSS -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <!-- JS -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="bower_components/angular-dragdrop/src/angular-dragdrop.js"></script>
+        <script src="script.js"></script> 
+
+    </head>
+    <body ng-app="dragndropApp">
+
+        <nav class="navbar navbar-drag" role="navigation" ng-controller="navCtrl">
+            <div class="navbar-header main-header">
+                <H2>Playing with Drag N Drop</H1>
+            </div>
+            <ul class="nav navbar-nav">
+                <li ng-repeat="navOption in navOptions"><a ui-sref="{{navOption.link}}">{{navOption.title}}</a></li>
+            </ul>
+        </nav>
+        <div class="container drag-container">
+
+            <!-- Inject content -->
+            <div ui-view></div>
+
+        </div>
+    </body>
+</html>

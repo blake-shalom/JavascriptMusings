@@ -1,0 +1,52 @@
+.add-sm-col {
+    margin-top: 20px;
+}
+
+.longbutton {
+    height: 100px;
+}
+.main-header {
+    color: blue;
+}
+.navbar-nav {
+    padding-left: 30px;
+}
+.navbar-drag {
+    padding-left: 50px;
+}
+.drag-container {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-right: 20px;
+    width: 100%;
+}
+.smello-column {
+    text-align: center;
+    margin-top: 10px;
+    margin-right: 5px;
+    border-style: solid;
+    border-color: #111111;
+    border-width: 1px;
+    max-width: 300px;
+    min-width: 150px;
+    min-height: 70px;
+    background: red;
+}
+.smello-row {
+    width: 100%;
+}
+.form-smello{
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-left: 0px;
+
+}
+.drag-cell {
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+
+}
