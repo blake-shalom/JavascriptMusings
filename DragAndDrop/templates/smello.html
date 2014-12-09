@@ -1,15 +1,17 @@
 <!-- smello.html -->
 
 <!DOCTYPE html>
-    <div class="row smello-row">
-        <div class="col-md-3 col-sm-4 col-xs-12 smello-column" ng-repeat="column in columns">
-            <div class="drag-cell" data-drag="true" data-jqyoui-options="{revert: true}" jqyoui-draggable="{animate:true}">
-                <h2 ng-hide="!column.hasName" ng-show="column.hasName">{{column.name}}</h2>
-                <div ng-hide="column.hasName" class="form-group form-smello">
-                    <form novalidate> 
-                        <input type="text" ng-model="column.name" class="form-control" placeholder="Enter title">
-                        <button class="btn" ng-click="assignName(column.id)">Submit</button>
-                    </form>
+    <div class="row smello-row thumbnails" ng-cloak>
+        <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="column in columns">
+            <div class="smello-column" data-drop="true" ng-model="columns" jqyoui-droppable="{index: {{$index}}}">
+                <div class="drag-cell" data-drag="true" ng-model="columns" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
+                    <h2 ng-hide="!column.hasName" ng-show="column.hasName">{{column.name}}</h2>
+                    <div ng-hide="column.hasName" class="form-group form-smello">
+                        <form novalidate> 
+                            <input type="text" ng-model="column.name" class="form-control" placeholder="Enter title">
+                            <button class="btn" ng-click="assignName(column.id)">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
