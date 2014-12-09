@@ -40,16 +40,28 @@ myApp.controller('navCtrl', function($scope){
 });
 
 myApp.controller('smelloCtrl', function($scope) {
+    $scope.canAddColumn = true;
     $scope.columns = [];
     $scope.addColumn = function(){
         var nextCol = $scope.columns.length + 1;
-        $scope.columns.push({name:"", id:nextCol, hasName:false})
+        $scope.columns.push({name:"", id:nextCol, hasName:false, drag:true, tasks:[]})
+        $scope.canAddColumn = false;
     }
-
+    $scope.addTask = function(id){
+        angular.forEach($scope.columns, function(column,index){
+            if (column.id == id) {
+                var nextCol = column.tasks.length + 1;
+                column.tasks.push({name:"", id:nextCol});
+            }
+        })
+    }
     $scope.assignName = function(id) {
         for (var i = 0; i < $scope.columns.length; i++) {
             if ($scope.columns[i].id == id) {
                 $scope.columns[i].hasName = true;
+                $scope.columns[i].drag = false;
+                $scope.canAddColumn = true;
+                break;
             }
         }
     }

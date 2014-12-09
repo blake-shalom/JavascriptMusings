@@ -3,19 +3,30 @@
 <!DOCTYPE html>
     <div class="row smello-row thumbnails" ng-cloak>
         <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="column in columns">
-            <div class="smello-column" data-drop="true" ng-model="columns" jqyoui-droppable="{index: {{$index}}}">
-                <div class="drag-cell" data-drag="true" ng-model="columns" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
-                    <h2 ng-hide="!column.hasName" ng-show="column.hasName">{{column.name}}</h2>
+            <div class="smello-column" data-drop="{{column.drag}}" ng-model="columns" jqyoui-droppable="{index: {{$index}}}">
+                <div class="drag-cell" data-drag="{{column.drag}}" ng-model="columns" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
                     <div ng-hide="column.hasName" class="form-group form-smello">
-                        <form novalidate> 
+                        <form ng-submit="assignName(column.id)" novalidate> 
                             <input type="text" ng-model="column.name" class="form-control" placeholder="Enter title">
-                            <button class="btn" ng-click="assignName(column.id)">Submit</button>
                         </form>
+                    </div>
+                    <div ng-hide="!column.hasName">
+                        <h2 class="row" ng-show="column.hasName">{{column.name}}</h2>
+                        <div class="row">
+                            <div ng-repeat="task in column.tasks">
+                                <div class="newClass" data-drop="true" ng-model="column.tasks" jqyoui-droppable="{index: {{$index}}}">
+                                    <div class="drag-cell" data-drag="true" ng-model="column.tasks" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
+                                        <p>{{task.name}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-xs btn-success" ng-click="addTask(column.id)">Add a task</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-4 col-xs-12 smello-column">
+        <div class="col-md-3 col-sm-4 col-xs-12 smello-column" ng-hide="!canAddColumn" ng-show="canAddColumn">
             <button class="btn btn-success add-sm-col" ng-click="addColumn()">Add a column!</button>
         </div>
     </div>
