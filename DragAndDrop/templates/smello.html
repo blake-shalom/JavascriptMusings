@@ -16,7 +16,12 @@
                             <div ng-repeat="task in column.tasks">
                                 <div class="newClass" data-drop="true" ng-model="column.tasks" jqyoui-droppable="{index: {{$index}}}">
                                     <div class="drag-cell" data-drag="true" ng-model="column.tasks" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}},placeholder:false,animate:false}">
-                                        <p>{{task.name}}</p>
+                                        <div ng-show="!task.hasName" class="form-group">
+                                            <form ng-submit="assignTask(column.id,task.id)" novalidate>
+                                                <input type="text" ng-model="task.name" class="form-control" placeholder="Enter task">
+                                            </form>
+                                        </div>
+                                        <p class="blakeP" ng-show="task.hasName">{{task.name}}</p>
                                     </div>
                                 </div>
                             </div>

@@ -51,7 +51,7 @@ myApp.controller('smelloCtrl', function($scope) {
         angular.forEach($scope.columns, function(column,index){
             if (column.id == id) {
                 var nextCol = column.tasks.length + 1;
-                column.tasks.push({name:"", id:nextCol});
+                column.tasks.push({name:"", id:nextCol, hasName:false});
             }
         })
     }
@@ -64,5 +64,16 @@ myApp.controller('smelloCtrl', function($scope) {
                 break;
             }
         }
+    }
+    $scope.assignTask = function(columnID, taskID) {
+        angular.forEach($scope.columns, function(column,index){ 
+            if (column.id == columnID) {
+                angular.forEach(column.tasks, function(task, index){
+                    if (task.id == taskID){
+                        task.hasName = true;
+                    }
+                })
+            }
+        })
     }
 });
